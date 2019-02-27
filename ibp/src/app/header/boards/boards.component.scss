@@ -1,0 +1,32 @@
+
+h2 {
+  font-size: 30px;
+  color: #cc7722;
+  text-align: center;
+}
+
+.category-list {
+  list-style: none;
+  height: 150px;
+  display: flex;
+  flex-direction: column; 
+  flex-wrap: wrap;
+  font-size: 20px;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.category-list .category-item {
+  page-break-inside: avoid;
+  break-inside: avoid;
+  padding: 10px;
+}
+
+.category-name {
+  color: #a52a2a;
+}
+
+.category-name:hover {
+  color: #000000;
+}
+
