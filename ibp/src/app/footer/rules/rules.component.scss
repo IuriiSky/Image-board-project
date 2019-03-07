@@ -1,0 +1,21 @@
+.wrapper-rules {
+    border: solid 5px #a52a2a;
+    margin: 50px 100px;
+    border-radius: 10%;
+}
+
+.rules,
+.rules-board {
+    text-align: center;
+    padding-top: 10px;
+}
+
+.order-list {
+    list-style: none;
+    counter-reset: li;
+}
+
+li:before {
+    counter-increment: li;
+    content: counters(li,".") ". ";
+}
