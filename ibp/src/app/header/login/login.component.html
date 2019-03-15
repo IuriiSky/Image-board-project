@@ -1,0 +1,37 @@
+<div class="login-box container">
+  <div class="login-tabs">
+    <nav>
+      <ul class="login-tabs__navigation">
+        <li>
+          <button (click)="toggleLogin()"  class="login-tab"  data-content="login">Увійти</button>
+        </li>
+        <li><button (click)="toggleRegister()"  class="login-tab" data-content="register">Реєстрація</button></li>
+      </ul>
+    </nav>
+<ul class="login-tabs__content">
+  <li data-content="login">
+    <div [ngClass]="{invisible: loginVisibility}" class="login-form">
+      <form class="login-user form-group" action="" method="post">
+        <fieldset [formGroup]="userloginControl">
+          <input formControlName="email" placeholder="е-mail адреса" type="email" required class="input">
+          <input formControlName="password" placeholder="пароль" type="password" required class="input">
+          <button name="login" type="submit" class="button-login" data-submit="Вхід">Вхід</button>
+        </fieldset>
+      </form>
+    </div>
+  </li>
+  <li>
+      <div [ngClass]="{invisible: registerVisibility}" class="form-register  invisible">
+          <form class="register-user form-group" action="" method="post">
+            <fieldset [formGroup]="userRegisterControl">
+              <input formControlName="email" placeholder="е-mail адреса" type="email" required class="input">
+              <input formControlName="user" placeholder="логін" type="" required class="input">
+              <input formControlName="password" placeholder="пароль" type="password" required class="input">
+              <button name="register" type="submit" class="button-login" data-submit="Реєстрація">Реєстрація</button>
+            </fieldset>
+          </form>
+        </div>
+  </li>
+</ul>
+  </div>
+</div>
