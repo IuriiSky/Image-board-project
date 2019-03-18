@@ -1,11 +1,16 @@
-<div class="container">  
-  <form id="contact" action="" method="post">
+<div id="contact-container" class="container">  
+  <form id="contact" action="/json-server/db-contacts-form.json" method="post">
     <h3>Зв'яжіться з нами</h3>
     <fieldset [formGroup]="fullContactsControl">
-      <input formControlName="name" placeholder="Ваше ім'я" type="text" autofocus required>
-      <input formControlName="email" placeholder="еmail адреса" type="email" required>
-      <textarea formControlName="text" placeholder="Ваше повідомлення...." required></textarea>
-      <button name="submit" type="submit" id="contact-submit" data-submit="...Надсилання">Відправити</button>
+      <input formControlName="name" placeholder="Ваше ім'я" type="text" name="name" autofocus required>
+      <input formControlName="email" placeholder="еmail адреса" type="email" name="email" required>
+      <textarea formControlName="text" placeholder="Ваше повідомлення...." type="text" name="textarea" required></textarea>
+      <button type="submit" onclick="change_visibility()" name="submit" id="contact-submit" data-submit="...Надсилання">Відправити</button>
     </fieldset>
   </form>
+</div>
+
+<div id="successful-send" class="successful-send">  
+  <h3>Дякуємо!</h3>
+  <p> Ваше звернення було успішно надіслано. <br> Найблищим часом ми Вам відповімо.</p>
 </div>

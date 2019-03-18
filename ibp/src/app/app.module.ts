@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -11,6 +12,7 @@ import { HomeComponent } from './header/home/home.component';
 import { RulesComponent } from './footer/rules/rules.component';
 import { AboutComponent } from './footer/about/about.component';
 import { ContactsComponent } from './footer/contacts/contacts.component';
+import { HttpClient } from 'selenium-webdriver/http';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { ContactsComponent } from './footer/contacts/contacts.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
 
   providers: [],
