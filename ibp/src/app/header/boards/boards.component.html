@@ -1,19 +1,19 @@
 <body>
-<h2>Дошки</h2>
+    <h2>Дошки</h2>
+        <button (click)="toggleCreateBoard()" type="submit" class="create-board">Створити дошку</button>
+    <div [ngClass]="{invisible: showCreateForm}" class="create-board-container invisible">  
+        <form id="board" action="" method="post">
+            <fieldset [formGroup]="createBoard">
+                <input formControlName="short_name" [(ngModel)]="createNewBoard.short_name" placeholder="скороченна назва" type="text" autofocus required>
+                <input formControlName="name" [(ngModel)]="createNewBoard.name" placeholder="назва" type="email" required>
+                <button (click)="addBoard()"  type="submit">Створити</button>
+                <button (click)="toggleCancelBoard()" style="background-color: #a52a2a" type="submit">Відмінити</button>
+            </fieldset>
+        </form>
+    </div>
     <ul class="category-list clearfix">
-        <li class="category-item"><a class="category-name" href="#Films"><span>|</span>Фільми<span>|</span></a></li>
-        <li class="category-item"><a class="category-name" href="#"><span>|</span>Музика<span>|</span></a></li>
-        <li class="category-item"><a class="category-name" href="#"><span>|</span>Серіали<span>|</span></a></li>
-        <li class="category-item"><a class="category-name" href="#"><span>|</span>Фото<span>|</span></a></li>
-        <li class="category-item"><a class="category-name" href="#"><span>|</span>Космос<span>|</span></a></li>
-        <li class="category-item"><a class="category-name" href="#"><span>|</span>Авто-мото<span>|</span></a></li>
-        <li class="category-item"><a class="category-name" href="#"><span>|</span>Спорт<span>|</span></a></li>
-        <li class="category-item"><a class="category-name" href="#"><span>|</span>Книги<span>|</span></a></li>
-        <li class="category-item"><a class="category-name" href="#"><span>|</span>Хобі<span>|</span></a></li>
-        <li class="category-item"><a class="category-name" href="#"><span>|</span>Іграшки<span>|</span></a></li>
-        <li class="category-item"><a class="category-name" href="#"><span>|</span>Подорожі<span>|</span></a></li>
-        <li class="category-item"><a class="category-name" href="#"><span>|</span>Україна<span>|</span></a></li>
-        <li class="category-item"><a class="category-name" href="#"><span>|</span>Домашні улюбленці<span>|</span></a></li>
-        <li class="category-item"><a class="category-name" href="#"><span>|</span>International<span>|</span></a></li>
+        <li class="category-item" *ngFor="let board of boards"> 
+            <a class="category-name" href="#"><span>|</span>{{board.name}}<span>|</span></a>
+        </li>
     </ul>
 </body>
