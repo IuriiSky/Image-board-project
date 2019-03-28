@@ -1,11 +1,18 @@
-<div class="container">  
+<div [ngClass]="{invisible: formShow}" class="container invisible">  
   <form id="contact" action="" method="post">
     <h3>Зв'яжіться з нами</h3>
     <fieldset [formGroup]="fullContactsControl">
       <input formControlName="name" placeholder="Ваше ім'я" type="text" autofocus required>
       <input formControlName="email" placeholder="еmail адреса" type="email" required>
       <textarea formControlName="text" placeholder="Ваше повідомлення...." required></textarea>
-      <button name="submit" type="submit" id="contact-submit" data-submit="...Надсилання">Відправити</button>
+      <button (click)="toggleShow()" name="submit" type="submit" id="contact-submit" data-submit="...Надсилання">Відправити</button>
     </fieldset>
   </form>
+</div>
+
+<div [ngClass]="{invisible: answerShow}" class="invisible">  
+  <div id="answer">
+    <h3>Дякуємо!<br>Ваше повідомлення успішно надіслано.<br> 
+        Найблищим часом ми його розглянемо.</h3>
+  </div>
 </div>
