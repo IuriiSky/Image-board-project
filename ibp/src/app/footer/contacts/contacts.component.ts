@@ -8,6 +8,14 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class ContactsComponent implements OnInit {
 
+  formShow: boolean = false;
+  answerShow: boolean = true;
+
+  toggleShow() {
+    this.formShow = true;
+    this.answerShow = false;
+  }
+  
   fullContactsControl: FormGroup;
 
   constructor() { }
