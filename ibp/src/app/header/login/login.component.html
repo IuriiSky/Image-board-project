@@ -3,32 +3,57 @@
     <nav>
       <ul class="login-tabs__navigation">
         <li>
-          <button (click)="toggleLogin()"  class="login-tab"  data-content="login">Увійти</button>
+          <button (click)="toggleLogin()"
+          class="login-tab"
+          data-content="login">Увійти</button>
         </li>
-        <li><button (click)="toggleRegister()"  class="login-tab" data-content="register">Реєстрація</button></li>
+        <li><button (click)="toggleRegister()"
+          class="login-tab"
+          data-content="register">Реєстрація</button>
+        </li>
       </ul>
     </nav>
 <ul class="login-tabs__content">
   <li data-content="login">
     <div [ngClass]="{invisible: loginVisibility}" class="login-form">
-      <form class="login-user form-group" action="" method="post">
-        <fieldset [formGroup]="userloginControl">
-          <input formControlName="email" placeholder="е-mail адреса" type="email" required class="input">
-          <input formControlName="password" placeholder="пароль" type="password" required class="input">
-          <button name="login" type="submit" class="button-login" data-submit="Вхід">Вхід</button>
-        </fieldset>
+      <form [formGroup]="userloginControl"
+        class="login-user form-group"
+        action=""
+        method="post"
+         (ngSubmit)="onSubmit()">
+        <input formControlName="email" placeholder="е-mail адреса" type="email" class="input">
+        <p *ngIf="userloginControl.get('email').invalid
+        && userloginControl.get('email').touched">
+          <span *ngIf="userloginControl.get('email').errors['email']"> Введіть коректну е-mail адресу!</span>
+          <span *ngIf="userloginControl.get('email').errors['emailIsUsed']"> Така е-mail адреса вже існує!</span>
+        </p>
+        <input formControlName="password" placeholder="пароль" type="password" class="input">
+        <p *ngIf="userloginControl.get('password').invalid
+        && userloginControl.get('password').touched">
+          <span *ngIf="userloginControl.get('password').errors['required']"> Поле пароль не повинно бути пусте!</span>
+          <br>
+          <span *ngIf="userloginControl.get('password').errors['lengthError']">
+            Пароль повинен бути не менше {{ charsCount }} символів!
+          </span>
+        </p>
+        <button
+          name="login"
+          type="submit"
+          class="button-login"
+          data-submit="Вхід"
+          [disabled]="userloginControl.invalid">
+          Вхід
+        </button>
       </form>
     </div>
   </li>
   <li>
       <div [ngClass]="{invisible: registerVisibility}" class="form-register  invisible">
-          <form class="register-user form-group" action="" method="post">
-            <fieldset [formGroup]="userRegisterControl">
+          <form [formGroup]="userRegisterControl" class="register-user form-group" action="" method="post" (ngSubmit)="onRegister()">
               <input formControlName="email" placeholder="е-mail адреса" type="email" required class="input">
               <input formControlName="user" placeholder="логін" type="" required class="input">
               <input formControlName="password" placeholder="пароль" type="password" required class="input">
               <button name="register" type="submit" class="button-login" data-submit="Реєстрація">Реєстрація</button>
-            </fieldset>
           </form>
         </div>
   </li>

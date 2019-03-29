@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +11,9 @@ export class LoginComponent implements OnInit {
   userloginControl: FormGroup;
   userRegisterControl: FormGroup;
 
+  charsCount = 4;
+
+  // choose between login and registration form
   loginVisibility: boolean = false;
   registerVisibility: boolean = true;
   toggleLogin() {
@@ -25,14 +28,45 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.userloginControl = new FormGroup({
-      email: new FormControl(),
-      password: new FormControl()
+      email: new FormControl('', [Validators.required, Validators.email], this.checkForEmail),
+      password: new FormControl('', [Validators.required, this.checkForLength.bind(this)])
     });
     this.userRegisterControl = new FormGroup({
       email: new FormControl(),
       user: new FormControl(),
       password: new FormControl()
-    })
+    });
   }
 
+  onSubmit() {
+    console.log('Submitted!', this.userloginControl);
+  }
+
+  onRegister() {
+    console.log('Registered!', this.userRegisterControl);
+  }
+
+  // Validators
+  checkForLength(control: FormControl) {
+    if (control.value.length <= this.charsCount) {
+      return {
+        lengthError: true
+      };
+    }
+    return null;
+  }
+
+  checkForEmail(control: FormControl): Promise<any> {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (control.value === 'test@mail.ru') {
+          resolve({
+            emailIsUsed: true
+          });
+        } else {
+          resolve(null);
+        }
+       }, 3000);
+    });
+  }
 }
