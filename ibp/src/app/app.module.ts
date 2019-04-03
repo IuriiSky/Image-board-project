@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 // import { Pipe, PipeTransform } from '@angular/core';
 // import { Directive } from '@angular/core';
@@ -16,8 +16,13 @@ import { RulesComponent } from './footer/rules/rules.component';
 import { AboutComponent } from './footer/about/about.component';
 import { ContactsComponent } from './footer/contacts/contacts.component';
 import { LoginComponent } from './header/login/login.component';
+import { CabinetComponent } from './header/cabinet/cabinet.component';
 
 import { BoardsService } from './services/boards.service';
+import { UsersService } from './services/users.service';
+import { CookieService } from './services/cookie.service';
+import { CabinetService } from './services/cabinet.service';
+import { TokenInterceptorService } from './services/token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -30,6 +35,7 @@ import { BoardsService } from './services/boards.service';
     AboutComponent,
     ContactsComponent,
     LoginComponent,
+    CabinetComponent,
   ],
 
   imports: [
@@ -40,7 +46,12 @@ import { BoardsService } from './services/boards.service';
     ReactiveFormsModule
   ],
 
-  providers: [BoardsService],
+  providers: [BoardsService, UsersService, CookieService, CabinetService,
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 

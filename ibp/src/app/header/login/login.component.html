@@ -21,15 +21,23 @@
         action=""
         method="post"
          (ngSubmit)="onSubmit()">
-        <input formControlName="email" placeholder="е-mail адреса" type="email" class="input">
+        <input formControlName="email"
+          [(ngModel)]="createNewUser.email"
+          placeholder="е-mail адреса"
+          type="email"
+          class="input">
         <p *ngIf="userloginControl.get('email').invalid
         && userloginControl.get('email').touched">
           <span *ngIf="userloginControl.get('email').errors['email']"> Введіть коректну е-mail адресу!</span>
           <span *ngIf="userloginControl.get('email').errors['emailIsUsed']"> Така е-mail адреса вже існує!</span>
         </p>
-        <input formControlName="password" placeholder="пароль" type="password" class="input">
+        <input formControlName="password"
+          [(ngModel)]="createNewUser.password"
+          placeholder="пароль"
+          type="password"
+          class="input">
         <p *ngIf="userloginControl.get('password').invalid
-        && userloginControl.get('password').touched">
+          && userloginControl.get('password').touched">
           <span *ngIf="userloginControl.get('password').errors['required']"> Поле пароль не повинно бути пусте!</span>
           <br>
           <span *ngIf="userloginControl.get('password').errors['lengthError']">
@@ -50,9 +58,24 @@
   <li>
       <div [ngClass]="{invisible: registerVisibility}" class="form-register  invisible">
           <form [formGroup]="userRegisterControl" class="register-user form-group" action="" method="post" (ngSubmit)="onRegister()">
-              <input formControlName="email" placeholder="е-mail адреса" type="email" required class="input">
-              <input formControlName="user" placeholder="логін" type="" required class="input">
-              <input formControlName="password" placeholder="пароль" type="password" required class="input">
+              <input formControlName="email"
+                [(ngModel)]="createNewUser.email"
+                placeholder="е-mail адреса"
+                type="email"
+                required
+                class="input">
+              <input formControlName="user"
+                [(ngModel)]="createNewUser.user"
+                placeholder="логін"
+                type="text"
+                required
+                class="input">
+              <input formControlName="password"
+                [(ngModel)]="createNewUser.password"
+                placeholder="пароль"
+                type="password"
+                required
+                class="input">
               <button name="register" type="submit" class="button-login" data-submit="Реєстрація">Реєстрація</button>
           </form>
         </div>

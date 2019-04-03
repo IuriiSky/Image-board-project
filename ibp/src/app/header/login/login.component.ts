@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UsersService } from '../../services/users.service';
+import { InterfaceUser } from '../../shared/interfaces/users.interfaces';
+import { CookieService } from '../../services/cookie.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,15 +11,27 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+
+
+  constructor(private usersService: UsersService,
+              private cookieService: CookieService,
+              private router: Router) { }
+
   nameControl: FormControl;
   userloginControl: FormGroup;
   userRegisterControl: FormGroup;
 
   charsCount = 4;
 
-  // choose between login and registration form
+  public createNewUser: InterfaceUser = {
+    email: '',
+    user: '',
+    password: ''
+  };
+
   loginVisibility: boolean = false;
   registerVisibility: boolean = true;
+
   toggleLogin() {
     this.loginVisibility = false;
     this.registerVisibility = true;
@@ -24,8 +40,6 @@ export class LoginComponent implements OnInit {
     this.loginVisibility = true;
     this.registerVisibility = false;
   }
-  constructor() { }
-
   ngOnInit() {
     this.userloginControl = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email], this.checkForEmail),
@@ -40,15 +54,34 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     console.log('Submitted!', this.userloginControl);
+    this.usersService.onSubmit(this.createNewUser)
+    .subscribe(
+      response => {
+        console.log(response),
+        this.cookieService.set('token', response.token);
+      },
+      error => console.log(error)
+      );
+    this.createNewUser.email = '';
+    this.createNewUser.password = '';
+    this.router.navigate(['/me']);
   }
 
   onRegister() {
     console.log('Registered!', this.userRegisterControl);
+    this.usersService.onRegister(this.createNewUser)
+    .subscribe(
+      response => console.log(response),
+      error => console.log(error)
+    );
+    this.createNewUser.email = '';
+    this.createNewUser.user = '';
+    this.createNewUser.password = '';
   }
 
   // Validators
   checkForLength(control: FormControl) {
-    if (control.value.length <= this.charsCount) {
+    if (control.value.length < this.charsCount) {
       return {
         lengthError: true
       };
@@ -69,4 +102,5 @@ export class LoginComponent implements OnInit {
        }, 3000);
     });
   }
+
 }

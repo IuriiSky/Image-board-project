@@ -1,0 +1,46 @@
+<div class="user-manage">
+  <button (click)="getUser()"
+          class="button"
+          data-content="user"
+          type="button">
+          Інформація про мене
+  </button>
+  <h1 class="user-name">{{ userData | json }}</h1>
+  <!-- <h1>Змінити персональну інформацію</h1>
+  <form (ngSubmit)="changeUser(changeUserForm)"
+        #changeUserForm = "ngForm">
+    <input type="email"
+            ngModel
+            name="email"
+            placeholder="е-mail адреса"
+            required
+            email
+            #email="ngModel">
+    <p *ngIf="email.invalid && email.touched">
+      Введіть коректну е-mail адресу!
+    </p>
+    <input type="text" ngModel name="user" placeholder="логін" required>
+    <input type="password"
+            ngModel
+            name="password"
+            placeholder="пароль"
+            required
+            #password="ngModel"> -->
+    <!-- <p *ngIf="password.touched">Поле пароль не повинно бути пусте!</p> -->
+    <!-- <button class="button"
+            type="submit">
+            Змінити профіль
+    </button>
+  </form> -->
+  <button (click)="deleteUser()"
+          class="button"
+          type="button">
+          Видалити профіль
+  </button>
+</div>
+<div *ngIf="changeSubmited">
+  <p>Ваші дані збережено.</p>
+  <pre>
+    {{userDataChange | json}}
+  </pre>
+</div>
