@@ -4,6 +4,7 @@ import { UsersService } from '../../services/users.service';
 import { InterfaceUser } from '../../shared/interfaces/users.interfaces';
 import { CookieService } from '../../services/cookie.service';
 import { Router } from '@angular/router';
+import { AuthorizationGuard } from '../../guards/authorization.guard';
 
 @Component({
   selector: 'app-login',
@@ -11,11 +12,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
+  message;
+  previousUrl;
 
   constructor(private usersService: UsersService,
               private cookieService: CookieService,
-              private router: Router) { }
+              private router: Router,
+              private authorizationGuard: AuthorizationGuard
+              ) { }
 
   nameControl: FormControl;
   userloginControl: FormGroup;
@@ -40,6 +44,7 @@ export class LoginComponent implements OnInit {
     this.loginVisibility = true;
     this.registerVisibility = false;
   }
+
   ngOnInit() {
     this.userloginControl = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email], this.checkForEmail),
@@ -50,6 +55,12 @@ export class LoginComponent implements OnInit {
       user: new FormControl(),
       password: new FormControl()
     });
+
+    if (this.authorizationGuard.redirectUrl) {
+      this.message = 'Ви повинні бути зареєстровані для перегляду цієї сторінки';
+      this.previousUrl = this.authorizationGuard.redirectUrl;
+      this.authorizationGuard.redirectUrl = undefined;
+    }
   }
 
   onSubmit() {
