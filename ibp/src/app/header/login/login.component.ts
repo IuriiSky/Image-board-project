@@ -76,9 +76,12 @@ export class LoginComponent implements OnInit {
     this.createNewUser.email = '';
     this.createNewUser.password = '';
     setTimeout(() => {
-      this.router.navigate(['/me']);
-  }, 2000);
-    // this.router.navigate(['/me']);
+      if (this.previousUrl) {
+        this.router.navigate([this.previousUrl]);
+      } else {
+        this.router.navigate(['/me']);
+      }
+    }, 2000);
   }
 
   onRegister() {

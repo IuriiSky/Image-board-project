@@ -1,3 +1,11 @@
+<div>
+  <a style="cursor:pointer"
+    (click)="cabinetUser.logoutUser()">
+    Вийти з профілю
+  </a>
+      <!-- *ngIf="!cabinetServise.checkUserLoggedIn()" -->
+
+</div>
 <div class="user-manage">
   <button (click)="getUser()"
           class="button"
@@ -38,9 +46,9 @@
           Видалити профіль
   </button>
 </div>
-<div *ngIf="changeSubmited">
+<!-- <div *ngIf="changeSubmited">
   <p>Ваші дані збережено.</p>
   <pre>
     {{userDataChange | json}}
   </pre>
-</div>
+</div> -->

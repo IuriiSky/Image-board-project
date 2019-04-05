@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CabinetService } from '../../services/cabinet.service';
+import { UsersService } from '../../services/users.service';
 import { FormControl, FormGroup, NgForm } from '@angular/forms';
 import { InterfaceUser } from '../../shared/interfaces/users.interfaces';
 
@@ -11,7 +12,8 @@ import { InterfaceUser } from '../../shared/interfaces/users.interfaces';
 export class CabinetComponent implements OnInit {
 
   authorizedUser = {};
-  constructor(private cabinetUser: CabinetService) { }
+  constructor(private cabinetUser: CabinetService,
+              private usersService: UsersService) { }
 
   public changeDataUser: InterfaceUser = {
     email: '',
@@ -63,4 +65,5 @@ export class CabinetComponent implements OnInit {
       error => console.log(error)
     );
   }
+
 }
