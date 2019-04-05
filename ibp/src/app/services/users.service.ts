@@ -69,5 +69,12 @@ getToken() {
   return this.cookieService.get('token');
 }
 
+checkUserLoggedIn() {
+  return this.cookieService.get('token');
+}
+
+// checkAuthorization() {
+//   return !!this.cookieService.get('token');
+// }
 
 }

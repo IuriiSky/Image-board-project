@@ -64,7 +64,10 @@ export class LoginComponent implements OnInit {
       );
     this.createNewUser.email = '';
     this.createNewUser.password = '';
-    this.router.navigate(['/me']);
+    setTimeout(() => {
+      this.router.navigate(['/me']);
+  }, 2000);
+    // this.router.navigate(['/me']);
   }
 
   onRegister() {

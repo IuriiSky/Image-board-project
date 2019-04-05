@@ -24,6 +24,9 @@ import { CookieService } from './services/cookie.service';
 import { CabinetService } from './services/cabinet.service';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 
+import { AuthorizationGuard } from './guards/authorization.guard';
+import { NotauthGuard } from './guards/notauth.guard';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +49,12 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     ReactiveFormsModule
   ],
 
-  providers: [BoardsService, UsersService, CookieService, CabinetService,
+  providers: [BoardsService,
+              UsersService,
+              CookieService,
+              CabinetService,
+              AuthorizationGuard,
+              NotauthGuard,
   {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
