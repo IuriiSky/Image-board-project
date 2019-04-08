@@ -6,15 +6,17 @@ import { LoginComponent } from './header/login/login.component';
 import { RulesComponent } from './footer/rules/rules.component';
 import { ContactsComponent } from './footer/contacts/contacts.component';
 import { AboutComponent } from './footer/about/about.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'boards', component: BoardsComponent},
   {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'rules', component: RulesComponent},
   {path: 'contacts', component: ContactsComponent},
   {path: 'about', component: AboutComponent},
+  {path: '**', component: PageNotFoundComponent},
 ];
 
 @NgModule({

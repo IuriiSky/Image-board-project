@@ -16,6 +16,7 @@ import { RulesComponent } from './footer/rules/rules.component';
 import { AboutComponent } from './footer/about/about.component';
 import { ContactsComponent } from './footer/contacts/contacts.component';
 import { LoginComponent } from './header/login/login.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 import { BoardsService } from './services/boards.service';
 
@@ -30,6 +31,7 @@ import { BoardsService } from './services/boards.service';
     AboutComponent,
     ContactsComponent,
     LoginComponent,
+    PageNotFoundComponent,
   ],
 
   imports: [

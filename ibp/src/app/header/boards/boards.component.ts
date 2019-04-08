@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Board, CreateBoard } from '../../shared/interfaces/board.interfaces';
 import { BoardsService } from '../../services/boards.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-boards',
@@ -25,7 +26,8 @@ export class BoardsComponent implements OnInit {
 
   public boards: Board[];
 
-  constructor(private boardsService: BoardsService) {}
+  constructor(private boardsService: BoardsService,
+              private router: Router) {}
 
   public createNewBoard: CreateBoard = {
     name: '',
@@ -44,7 +46,7 @@ export class BoardsComponent implements OnInit {
       this.showCreateForm = true;
     });
   };
-  
+ 
   ngOnInit() {
     this.boardsService.getAllBoards().subscribe((data:Board[]) => {
       this.boards = data;
@@ -55,4 +57,8 @@ export class BoardsComponent implements OnInit {
       name: new FormControl('',[Validators.required])      
     });
   }
+
+  // onSelect(board){
+  //   this.router.navigate(['/boards', board.id]);
+  // }
 }
