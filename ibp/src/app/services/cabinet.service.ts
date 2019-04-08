@@ -35,7 +35,7 @@ logoutUser() {
   this.router.navigate(['/']);
 }
 
-checkUserLoggedIn() {
-  return this.cookieService.get('token');
-}
+// checkUserLoggedIn() {
+//   return this.cookieService.get('token');
+// }
 }
