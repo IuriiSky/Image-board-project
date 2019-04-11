@@ -10,6 +10,7 @@ import { CabinetComponent } from './header/cabinet/cabinet.component';
 import { AuthorizationGuard } from './guards/authorization.guard';
 import { CanActivate } from '@angular/router/src/utils/preactivation';
 import { NotauthGuard } from './guards/notauth.guard';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: 'contacts', component: ContactsComponent},
   {path: 'about', component: AboutComponent},
   {path: 'me', component: CabinetComponent, canActivate: [AuthorizationGuard]},
+  {path: '**', component: PageNotFoundComponent},
 
 ];
 

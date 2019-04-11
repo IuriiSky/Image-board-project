@@ -17,6 +17,7 @@ import { AboutComponent } from './footer/about/about.component';
 import { ContactsComponent } from './footer/contacts/contacts.component';
 import { LoginComponent } from './header/login/login.component';
 import { CabinetComponent } from './header/cabinet/cabinet.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
 
 import { BoardsService } from './services/boards.service';
 import { UsersService } from './services/users.service';
@@ -39,6 +40,7 @@ import { NotauthGuard } from './guards/notauth.guard';
     ContactsComponent,
     LoginComponent,
     CabinetComponent,
+    PageNotFoundComponent,
   ],
 
   imports: [
