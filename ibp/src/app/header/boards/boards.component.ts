@@ -33,6 +33,7 @@ export class BoardsComponent implements OnInit {
     name: '',
     short_name: '',
     user_id: 0,
+    description: '',
   };
 
   addBoard() {
@@ -43,6 +44,7 @@ export class BoardsComponent implements OnInit {
       this.createNewBoard.name = '';
       this.createNewBoard.short_name = '';
       this.createNewBoard.user_id = 0;
+      this.createNewBoard.description = '';
       this.showCreateForm = true;
     });
   };
@@ -54,7 +56,8 @@ export class BoardsComponent implements OnInit {
 
     this.createBoard = new FormGroup({
       short_name: new FormControl('',[Validators.required, Validators.maxLength(3)]),
-      name: new FormControl('',[Validators.required])      
+      name: new FormControl('',[Validators.required]),
+      description: new FormControl('', [Validators.required])      
     });
   }
 

@@ -5,6 +5,7 @@
             <fieldset [formGroup]="createBoard">
                 <input formControlName="short_name" [(ngModel)]="createNewBoard.short_name" placeholder="скороченна назва" type="text" autofocus required>
                 <input formControlName="name" [(ngModel)]="createNewBoard.name" placeholder="назва" type="text" required>
+                <input formControlName="description" [(ngModel)]="createNewBoard.description" placeholder="опис" type="text" required>
                 <button (click)="addBoard()"  type="submit">Створити</button>
                 <button (click)="toggleCancelBoard()" style="background-color: #a52a2a" type="submit">Відмінити</button>
             </fieldset>
