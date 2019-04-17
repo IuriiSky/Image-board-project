@@ -27,6 +27,7 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
 
 import { AuthorizationGuard } from './guards/authorization.guard';
 import { NotauthGuard } from './guards/notauth.guard';
+import { PostsComponent } from './posts/posts.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { NotauthGuard } from './guards/notauth.guard';
     LoginComponent,
     CabinetComponent,
     PageNotFoundComponent,
+    PostsComponent,
   ],
 
   imports: [

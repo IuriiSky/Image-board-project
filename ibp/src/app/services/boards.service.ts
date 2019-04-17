@@ -17,7 +17,7 @@ export class BoardsService {
   baseApi = 'http://localhost:3000/api/';
 
   getAllBoards() {
-    return this.http.get<Board[]>(this.baseApi+'boards/all');
+    return this.http.get<Board[]>(this.baseApi+'boards');
 };
 
   createBoard(board: CreateBoard) {
@@ -28,7 +28,7 @@ export class BoardsService {
       "board[description]": board.description,
     };
 
-    return this.http.post<any>(this.baseApi + 'boards', this.objToEncodeUrl(body), urlEnhttpOptions);
+    return this.http.post<any>(this.baseApi + 'admin/boards', this.objToEncodeUrl(body), urlEnhttpOptions);
   };
 
   private objToEncodeUrl(obj: any): string {
