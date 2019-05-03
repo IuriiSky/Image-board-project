@@ -10,9 +10,12 @@ import { CabinetComponent } from './header/cabinet/cabinet.component';
 import { AuthorizationGuard } from './guards/authorization.guard';
 import { CanActivate } from '@angular/router/src/utils/preactivation';
 import { NotauthGuard } from './guards/notauth.guard';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PostsComponent } from './posts/posts.component';
+  import { from } from 'rxjs';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'boards', component: BoardsComponent},
   {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent, canActivate: [NotauthGuard]},
@@ -20,6 +23,8 @@ const routes: Routes = [
   {path: 'contacts', component: ContactsComponent},
   {path: 'about', component: AboutComponent},
   {path: 'me', component: CabinetComponent, canActivate: [AuthorizationGuard]},
+  {path: 'posts', component: PostsComponent},
+  {path: '**', component: PageNotFoundComponent},
 
 ];
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Board, CreateBoard } from '../../shared/interfaces/board.interfaces';
 import { BoardsService } from '../../services/boards.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-boards',
@@ -25,12 +26,14 @@ export class BoardsComponent implements OnInit {
 
   public boards: Board[];
 
-  constructor(private boardsService: BoardsService) {}
+  constructor(private boardsService: BoardsService,
+              private router: Router) {}
 
   public createNewBoard: CreateBoard = {
     name: '',
     short_name: '',
     user_id: 0,
+    description: '',
   };
 
   addBoard() {
@@ -41,10 +44,11 @@ export class BoardsComponent implements OnInit {
       this.createNewBoard.name = '';
       this.createNewBoard.short_name = '';
       this.createNewBoard.user_id = 0;
+      this.createNewBoard.description = '';
       this.showCreateForm = true;
     });
   };
-  
+ 
   ngOnInit() {
     this.boardsService.getAllBoards().subscribe((data:Board[]) => {
       this.boards = data;
@@ -52,7 +56,12 @@ export class BoardsComponent implements OnInit {
 
     this.createBoard = new FormGroup({
       short_name: new FormControl('',[Validators.required, Validators.maxLength(3)]),
-      name: new FormControl('',[Validators.required])      
+      name: new FormControl('',[Validators.required]),
+      description: new FormControl('', [Validators.required])      
     });
   }
+
+  // onSelect(board){
+  //   this.router.navigate(['/boards', board.id]);
+  // }
 }
