@@ -28,6 +28,8 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
 import { AuthorizationGuard } from './guards/authorization.guard';
 import { NotauthGuard } from './guards/notauth.guard';
 import { PostsComponent } from './posts/posts.component';
+import { BoardDetailsComponent } from './header/board-details/board-details.component';
+import { BoardDetailService } from './services/board-detail.service';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,7 @@ import { PostsComponent } from './posts/posts.component';
     CabinetComponent,
     PageNotFoundComponent,
     PostsComponent,
+    BoardDetailsComponent,
   ],
 
   imports: [
@@ -55,6 +58,7 @@ import { PostsComponent } from './posts/posts.component';
 
   providers: [BoardsService,
               UsersService,
+              BoardDetailService,
               CookieService,
               CabinetService,
               AuthorizationGuard,

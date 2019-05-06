@@ -24,7 +24,6 @@ export class BoardsService {
     let body = {
       "board[short_name]" : board.short_name,
       "board[name]" : board.name,
-      "board[user_id]" : board.user_id,
       "board[description]": board.description,
     };
 
