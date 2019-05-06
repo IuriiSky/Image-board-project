@@ -13,6 +13,6 @@
     </div>
     <ul class="category-list clearfix">
         <li class="category-item" *ngFor="let board of boards"> 
-            <a class="category-name" routerLink = "{{board.id}}" ><span>|</span>{{board.name}}<span>|</span></a>
+            <a class="category-name" [routerLink] = "['/boards', board.short_name]" ><span>|</span>{{board.name}}<span>|</span></a>
         </li>
     </ul>

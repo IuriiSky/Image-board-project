@@ -12,20 +12,20 @@ import { CanActivate } from '@angular/router/src/utils/preactivation';
 import { NotauthGuard } from './guards/notauth.guard';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PostsComponent } from './posts/posts.component';
-  import { from } from 'rxjs';
+import { BoardDetailsComponent } from './header/board-details/board-details.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'boards', component: BoardsComponent},
+  {path: 'boards/:short_name', component: BoardDetailsComponent},
+  {path: 'boards/:board_index/createpost', component: PostsComponent},
   {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent, canActivate: [NotauthGuard]},
   {path: 'rules', component: RulesComponent},
   {path: 'contacts', component: ContactsComponent},
   {path: 'about', component: AboutComponent},
   {path: 'me', component: CabinetComponent, canActivate: [AuthorizationGuard]},
-  {path: 'posts', component: PostsComponent},
   {path: '**', component: PageNotFoundComponent},
-
 ];
 
 @NgModule({
