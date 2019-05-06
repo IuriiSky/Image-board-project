@@ -32,18 +32,15 @@ export class BoardsComponent implements OnInit {
   public createNewBoard: CreateBoard = {
     name: '',
     short_name: '',
-    user_id: 0,
     description: '',
   };
 
   addBoard() {
-    this.createNewBoard.user_id = 1;
     this.boardsService.createBoard(this.createNewBoard)
     .subscribe(board => {
       console.log(board);
       this.createNewBoard.name = '';
       this.createNewBoard.short_name = '';
-      this.createNewBoard.user_id = 0;
       this.createNewBoard.description = '';
       this.showCreateForm = true;
     });
@@ -60,8 +57,4 @@ export class BoardsComponent implements OnInit {
       description: new FormControl('', [Validators.required])      
     });
   }
-
-  // onSelect(board){
-  //   this.router.navigate(['/boards', board.id]);
-  // }
 }
