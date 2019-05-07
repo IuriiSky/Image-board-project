@@ -41,18 +41,33 @@
     </symbol>
   </defs>
 </svg>
-<button class="back-button">Back</button>
+<p>Створити пост</p>
+<button class="back-button" routerLink="/boards">Back</button>
 <div class="create-post">
-  <form id="post" action="" method="POST">
+  <form id="post" action="" method="POST" class="border_none">
     <span class="inform-block">
       <span>{{today | date: 'dd-MM-yyyy'}}</span>
       <span>{{today | date: 'hh:mm:ss'}}</span>
     </span>
-    <fieldset [formGroup]="createPost">
-      <input formControlName = "name" [(ngModel)]="createNewPost.name" class="user-info" type="text"  placeholder="anonymous">
-      <input formControlName = "email" [(ngModel)]="createNewPost.email" class="user-info" type="email"  placeholder="email">
+
+    <fieldset [formGroup]="createPost" class="border_none align_fieldset">
+      <div>
+      <input formControlName = "name" [(ngModel)]="createNewPost.name" class="user-info input" type="text"  placeholder="anonymous">
+      <br>
+      <input formControlName = "email"
+      [(ngModel)]="createNewPost.email"
+      class="user-info input"
+      type="email"
+      placeholder="email">
+    </div>
       <div class="message-block">
-        <input type="text" name="items" id="" formControlName = "subject" [(ngModel)]="createNewPost.subject" placeholder="items">
+        <input type="text"
+        name="items"
+        id="" formControlName = "subject"
+        [(ngModel)]="createNewPost.subject"
+        placeholder="items"
+        class="input__items input"
+        >
         <span class="btn-bar">
           <input class="btn" type="image" src="../../assets/icomoon-btn-bar/SVG/bold.svg" alt="bold">
           <input class="btn" type="image" src="../../assets/icomoon-btn-bar/SVG/italic.svg" alt="bold">
@@ -64,13 +79,24 @@
           <input class="btn" type="image" src="../../assets/icomoon-btn-bar/SVG/warning.svg" alt="bold">
           <input class="btn" type="image" src="../../assets/icomoon-btn-bar/SVG/smile.svg" alt="bold">
         </span>
-        <textarea formControlName = "text" [(ngModel)]="createNewPost.text" name="message" cols="60" rows="10"></textarea>
+        <textarea formControlName = "text"
+          [(ngModel)]="createNewPost.text"
+          name="message"
+          cols="50"
+          rows="10"
+          class="textarea">
+        </textarea>
       </div>
       <div class="form-group">
-          <input type="file" id="file" (change)="handleFileInput($event.target.files)">
-      </div>     
-      <button type="submit" (click)="addPost()">Post</button>
-      <button type="submit">Cancel</button>
+          <input type="file"
+          name="Download file"
+          id="file"
+          (change)="handleFileInput($event.target.files)"
+          class="attach-button">
+          <!-- style="display:none" -->
+      </div>
+      <button class="button-login" type="submit" (click)="addPost()">Post</button>
+      <button class="button-login" type="submit" routerLink="/boards">Cancel</button>
     </fieldset>
   </form>
 </div>
