@@ -8,12 +8,24 @@
 </div>
 <div class="user-manage">
   <button (click)="getUser()"
-          class="button"
+          class="button-login"
           data-content="user"
           type="button">
           Інформація про мене
   </button>
-  <h1 class="user-name">{{ userData | json }}</h1>
+  <div>
+  <!-- <h1 class="user-name">{{ userData | json }}</h1> -->
+  <p>{{ userData.name }}</p>
+  <!-- <p class="user-name">{{ userData.access_level }}</p> -->
+  <p>{{ userData.email }}</p>
+  <p>{{ userData.created_at }}</p>
+</div>
+  <br>
+
+
+
+
+
   <!-- <h1>Змінити персональну інформацію</h1>
   <form (ngSubmit)="changeUser(changeUserForm)"
         #changeUserForm = "ngForm">
@@ -41,7 +53,7 @@
     </button>
   </form> -->
   <button (click)="deleteUser()"
-          class="button"
+          class="button-login"
           type="button">
           Видалити профіль
   </button>

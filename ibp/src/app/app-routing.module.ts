@@ -15,7 +15,7 @@ import { PostsComponent } from './posts/posts.component';
 import { BoardDetailsComponent } from './header/board-details/board-details.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: '', redirectTo: '/about', pathMatch: 'full'},
   {path: 'boards', component: BoardsComponent},
   {path: 'boards/:short_name', component: BoardDetailsComponent},
   {path: 'boards/:board_index/createpost', component: PostsComponent},
