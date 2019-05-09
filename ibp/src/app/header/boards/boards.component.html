@@ -1,4 +1,3 @@
-    <h2>Дошки</h2>
         <button (click)="toggleCreateBoard()" type="submit" class="create-board">Створити дошку</button>
     <div [ngClass]="{invisible: showCreateForm}" class="create-board-container invisible">  
         <form id="board" action="" method="post">
@@ -13,6 +12,6 @@
     </div>
     <ul class="category-list clearfix">
         <li class="category-item" *ngFor="let board of boards"> 
-            <a class="category-name" [routerLink] = "['/boards', board.short_name]" ><span>|</span>{{board.name}}<span>|</span></a>
+            <a class="category-name" [routerLink] = "['/boards', board.short_name]" >{{board.name}}</a>
         </li>
     </ul>
