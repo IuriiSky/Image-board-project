@@ -1,33 +1,13 @@
 .navbar {
   display: flex;
   justify-content: center;
-  background-color: #a52a2a;
-  border-radius: 50%;
+  border-bottom: 1px solid #DDD;
 }
 
-.navbar-menu-left,
-.navbar-menu-right {
-  padding: 8px 14px;
+.navbar-menu {
+  padding: 5px;
 }
 
-.navbar-menu-left:hover,
-.navbar-menu-right:hover {
-  background-color: #fdeaa8;
-  border-radius: 50%;
-}
-
-.search-form {
-  margin-top: 6px;
-  width: 150px;
-  box-sizing: border-box;
-  border-radius: 4px;
-  font-size: 16px;
-  background-color:#fdeaa8;
-  background-image: url('/assets/icomoon-navbar/SVG/search.svg');
-  background-repeat: no-repeat;
-  padding: 10px 20px 5px 40px;
-  transition: width 0.4s ease-in-out;
-}
-.search-form:focus {
-  width: 500px;
+a:hover {
+  text-decoration: none;
 }
