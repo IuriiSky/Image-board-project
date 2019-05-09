@@ -45,40 +45,23 @@
 <button class="back-button" routerLink="/boards">Back</button>
 <div class="create-post">
   <form id="post" action="" method="POST" class="border_none">
-    <span class="inform-block">
-      <span>{{today | date: 'dd-MM-yyyy'}}</span>
-      <span>{{today | date: 'hh:mm:ss'}}</span>
-    </span>
-
     <fieldset [formGroup]="createPost" class="border_none align_fieldset">
-      <div>
-      <input formControlName = "name" [(ngModel)]="createNewPost.name" class="user-info input" type="text"  placeholder="anonymous">
-      <br>
-      <input formControlName = "email"
-      [(ngModel)]="createNewPost.email"
-      class="user-info input"
-      type="email"
-      placeholder="email">
-    </div>
       <div class="message-block">
         <input type="text"
         name="items"
         id="" formControlName = "subject"
         [(ngModel)]="createNewPost.subject"
-        placeholder="items"
+        placeholder="Subject"
         class="input__items input"
         >
-        <span class="btn-bar">
+        <div class="btn-bar">
           <input class="btn" type="image" src="../../assets/icomoon-btn-bar/SVG/bold.svg" alt="bold">
           <input class="btn" type="image" src="../../assets/icomoon-btn-bar/SVG/italic.svg" alt="bold">
           <input class="btn" type="image" src="../../assets/icomoon-btn-bar/SVG/underline.svg" alt="bold">
           <input class="btn" type="image" src="../../assets/icomoon-btn-bar/SVG/strikethrough.svg" alt="bold">
           <input class="btn" type="image" src="../../assets/icomoon-btn-bar/SVG/subscript.svg" alt="bold">
           <input class="btn" type="image" src="../../assets/icomoon-btn-bar/SVG/superscript.svg" alt="bold">
-          <input class="btn" type="image" src="../../assets/icomoon-btn-bar/SVG/bullhorn.svg" alt="bold">
-          <input class="btn" type="image" src="../../assets/icomoon-btn-bar/SVG/warning.svg" alt="bold">
-          <input class="btn" type="image" src="../../assets/icomoon-btn-bar/SVG/smile.svg" alt="bold">
-        </span>
+        </div>
         <textarea formControlName = "text"
           [(ngModel)]="createNewPost.text"
           name="message"
@@ -96,7 +79,6 @@
           <!-- style="display:none" -->
       </div>
       <button class="button-login" type="submit" (click)="addPost()">Post</button>
-      <button class="button-login" type="submit" routerLink="/boards">Cancel</button>
     </fieldset>
   </form>
 </div>
