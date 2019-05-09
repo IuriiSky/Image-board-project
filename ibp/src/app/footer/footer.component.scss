@@ -6,19 +6,13 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: #a52a2a;
-    height: 5%;
-  }
-
-.footer-links,
-.acronym {
-    text-decoration: none;
-    padding: 0px 10px;
-    color: #000000;
+    border-top: 1px solid #DDD;
 }
 
-.footer-links:hover,
-.acronym:hover {
-    font-size: 20px;
-    color: #cc7722;
+.footer-links{
+    padding: 5px;
+}
+
+.footer-links:hover {
+    text-decoration: none;
 }
