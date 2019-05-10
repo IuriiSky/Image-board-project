@@ -24,3 +24,14 @@
   outline: 0;
   border: 1px solid #AAA;
 }
+
+li {
+  list-style-type: none;
+  margin-top: 30px;
+}
+
+.main-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr;
+}

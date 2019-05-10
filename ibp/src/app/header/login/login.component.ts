@@ -14,7 +14,7 @@ import { AuthorizationGuard } from '../../guards/authorization.guard';
 export class LoginComponent implements OnInit {
   message;
   previousUrl;
-
+  userData = {};
   constructor(private usersService: UsersService,
               private cookieService: CookieService,
               private router: Router,
@@ -81,7 +81,7 @@ export class LoginComponent implements OnInit {
       } else {
         this.router.navigate(['/me']);
       }
-    }, 2000);
+    }, 3000);
   }
 
   onRegister() {

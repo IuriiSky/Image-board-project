@@ -57,7 +57,10 @@
   </li>
   <li>
       <div [ngClass]="{invisible: registerVisibility}" class="form-register  invisible">
-          <form [formGroup]="userRegisterControl" class="register-user form-group" action="" method="post" (ngSubmit)="onRegister()">
+          <form [formGroup]="userRegisterControl"
+            class="register-user form-group"
+            action="" method="post"
+            (ngSubmit)="onRegister()">
               <input formControlName="email"
                 [(ngModel)]="createNewUser.email"
                 placeholder="е-mail адреса"

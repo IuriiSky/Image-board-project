@@ -15,6 +15,14 @@ import { PostsComponent } from './posts/posts.component';
 import { BoardDetailsComponent } from './header/board-details/board-details.component';
 import { AppModule } from './app.module';
 import { AppComponent } from './app.component';
+import { AboutUserComponent } from './header/cabinet/about-user/about-user.component';
+import { InviteuserComponent } from './header/cabinet/inviteuser/inviteuser.component';
+import { MymentionsComponent } from './header/cabinet/mymentions/mymentions.component';
+import { MypostsComponent } from './header/cabinet/myposts/myposts.component';
+import { AdminComponent } from './header/cabinet/admin/admin.component';
+import { ReportsComponent } from './header/cabinet/admin/reports/reports.component';
+import { ManageusersComponent } from './header/cabinet/admin/manageusers/manageusers.component';
+import { ManageboardsComponent } from './header/cabinet/admin/manageboards/manageboards.component';
 
 const routes: Routes = [
   {path: 'boards', component: BoardsComponent},
@@ -25,7 +33,18 @@ const routes: Routes = [
   {path: 'rules', component: RulesComponent},
   {path: 'contacts', component: ContactsComponent},
   {path: 'about', component: AboutComponent},
-  {path: 'me', component: CabinetComponent, canActivate: [AuthorizationGuard]},
+  {path: 'me', component: CabinetComponent, canActivate: [AuthorizationGuard], children: [
+    {path: 'info', component: AboutUserComponent},
+    {path: 'invites', component: InviteuserComponent},
+    {path: 'posts', component: MypostsComponent},
+    {path: 'mentions', component: MymentionsComponent},
+    {path: 'admin', component: AdminComponent, children: [
+      {path: 'reports', component: ReportsComponent},
+      {path: 'boards', component: ManageboardsComponent},
+      {path: 'users', component: ManageusersComponent},
+    ]},
+  ]},
+
   // {path: '**', component: PageNotFoundComponent},
 ];
 
