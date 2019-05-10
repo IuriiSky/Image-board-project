@@ -15,6 +15,10 @@ import { PostsComponent } from './posts/posts.component';
 import { BoardDetailsComponent } from './header/board-details/board-details.component';
 import { AppModule } from './app.module';
 import { AppComponent } from './app.component';
+import { AboutUserComponent } from './header/cabinet/about-user/about-user.component';
+import { InviteuserComponent } from './header/cabinet/inviteuser/inviteuser.component';
+import { MymentionsComponent } from './header/cabinet/mymentions/mymentions.component';
+import { MypostsComponent } from './header/cabinet/myposts/myposts.component';
 
 const routes: Routes = [
   {path: 'boards', component: BoardsComponent},
@@ -25,7 +29,12 @@ const routes: Routes = [
   {path: 'rules', component: RulesComponent},
   {path: 'contacts', component: ContactsComponent},
   {path: 'about', component: AboutComponent},
-  {path: 'me', component: CabinetComponent, canActivate: [AuthorizationGuard]},
+  {path: 'me', component: CabinetComponent, canActivate: [AuthorizationGuard], children: [
+    {path: 'info', component: AboutUserComponent},
+    {path: 'invites', component: InviteuserComponent},
+    {path: 'posts', component: MypostsComponent},
+    {path: 'mentions', component: MymentionsComponent}
+  ]},
   // {path: '**', component: PageNotFoundComponent},
 ];
 

@@ -29,7 +29,7 @@ export class CabinetComponent implements OnInit {
     this.cabinetUser.getUser()
     .subscribe(
       response => {this.authorizedUser = response,
-        console.log(this.authorizedUser);
+        window.localStorage.setItem('userData', JSON.stringify(response));
       },
       error => console.log(error)
     );
@@ -67,7 +67,7 @@ export class CabinetComponent implements OnInit {
   }
 
   submitInvite(formInvite: NgForm) {
-    console.log('Запрошення відправлено!', formInvite)
+    console.log('Запрошення відправлено!', formInvite);
   }
 
 }

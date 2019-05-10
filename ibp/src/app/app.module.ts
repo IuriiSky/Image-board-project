@@ -30,6 +30,10 @@ import { NotauthGuard } from './guards/notauth.guard';
 import { PostsComponent } from './posts/posts.component';
 import { BoardDetailsComponent } from './header/board-details/board-details.component';
 import { BoardDetailService } from './services/board-detail.service';
+import { AboutUserComponent } from './header/cabinet/about-user/about-user.component';
+import { InviteuserComponent } from './header/cabinet/inviteuser/inviteuser.component';
+import { MypostsComponent } from './header/cabinet/myposts/myposts.component';
+import { MymentionsComponent } from './header/cabinet/mymentions/mymentions.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +50,10 @@ import { BoardDetailService } from './services/board-detail.service';
     PageNotFoundComponent,
     PostsComponent,
     BoardDetailsComponent,
+    AboutUserComponent,
+    InviteuserComponent,
+    MypostsComponent,
+    MymentionsComponent,
   ],
 
   imports: [
