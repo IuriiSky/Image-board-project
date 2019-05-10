@@ -34,6 +34,10 @@ import { AboutUserComponent } from './header/cabinet/about-user/about-user.compo
 import { InviteuserComponent } from './header/cabinet/inviteuser/inviteuser.component';
 import { MypostsComponent } from './header/cabinet/myposts/myposts.component';
 import { MymentionsComponent } from './header/cabinet/mymentions/mymentions.component';
+import { AdminComponent } from './header/cabinet/admin/admin.component';
+import { ReportsComponent } from './header/cabinet/admin/reports/reports.component';
+import { ManageboardsComponent } from './header/cabinet/admin/manageboards/manageboards.component';
+import { ManageusersComponent } from './header/cabinet/admin/manageusers/manageusers.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +58,10 @@ import { MymentionsComponent } from './header/cabinet/mymentions/mymentions.comp
     InviteuserComponent,
     MypostsComponent,
     MymentionsComponent,
+    AdminComponent,
+    ReportsComponent,
+    ManageboardsComponent,
+    ManageusersComponent,
   ],
 
   imports: [

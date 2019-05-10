@@ -19,6 +19,10 @@ import { AboutUserComponent } from './header/cabinet/about-user/about-user.compo
 import { InviteuserComponent } from './header/cabinet/inviteuser/inviteuser.component';
 import { MymentionsComponent } from './header/cabinet/mymentions/mymentions.component';
 import { MypostsComponent } from './header/cabinet/myposts/myposts.component';
+import { AdminComponent } from './header/cabinet/admin/admin.component';
+import { ReportsComponent } from './header/cabinet/admin/reports/reports.component';
+import { ManageusersComponent } from './header/cabinet/admin/manageusers/manageusers.component';
+import { ManageboardsComponent } from './header/cabinet/admin/manageboards/manageboards.component';
 
 const routes: Routes = [
   {path: 'boards', component: BoardsComponent},
@@ -33,8 +37,14 @@ const routes: Routes = [
     {path: 'info', component: AboutUserComponent},
     {path: 'invites', component: InviteuserComponent},
     {path: 'posts', component: MypostsComponent},
-    {path: 'mentions', component: MymentionsComponent}
+    {path: 'mentions', component: MymentionsComponent},
+    {path: 'admin', component: AdminComponent, children: [
+      {path: 'reports', component: ReportsComponent},
+      {path: 'boards', component: ManageboardsComponent},
+      {path: 'users', component: ManageusersComponent},
+    ]},
   ]},
+
   // {path: '**', component: PageNotFoundComponent},
 ];
 

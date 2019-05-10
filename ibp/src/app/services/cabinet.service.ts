@@ -29,6 +29,9 @@ export class CabinetService {
   }
 
   deleteUser(user: InterfaceUser) {
+    this.cookieService.delete_cookie('token');
+    this.router.navigate(['/']);
+    window.localStorage.clear();
     return this.http.delete(this.usersUrl, httpOptions);
   }
 

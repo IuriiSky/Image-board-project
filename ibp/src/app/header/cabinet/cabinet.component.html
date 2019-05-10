@@ -1,6 +1,28 @@
 <div class="main-wrapper">
   <nav>
     <ul>
+
+      <li>
+        <a routerLinkActive="active"
+          routerLink="/me/admin/reports">
+          Скарги
+        </a>
+      </li>
+
+      <li>
+        <a routerLinkActive="active"
+          routerLink="/me/admin/boards">
+          Дошки
+        </a>
+      </li>
+
+      <li>
+        <a routerLinkActive="active"
+          routerLink="/me/admin/users">
+          Юзери
+        </a>
+      </li>
+
       <li>
         <a routerLinkActive="active"
           routerLink="/me/info">
@@ -31,16 +53,20 @@
         </a>
       </li>
 
-      <li>
-        <a>
+      <li (click)="cabinetUser.logoutUser()">
+        <a style="cursor:pointer"
+          >
+     <!-- *ngIf="!cabinetServise.checkUserLoggedIn()" -->
           Вийти з профілю
         </a>
       </li>
 
       <li>
-        <a>
+        <button (click)="deleteUser()"
+          class="button-login"
+          type="button">
           Видалити профіль
-        </a>
+        </button>
       </li>
 
     </ul>
@@ -49,21 +75,13 @@
     <router-outlet></router-outlet>
   </article>
 
-  <div>
-    <a style="cursor:pointer"
-      (click)="cabinetUser.logoutUser()">
-      Вийти з профілю
-    </a>
-        <!-- *ngIf="!cabinetServise.checkUserLoggedIn()" -->
-
-  </div>
-
-    <button (click)="getUser()"
+</div>
+    <!-- <button (click)="getUser()"
             class="button-login"
             data-content="user"
             type="button">
             Інформація про мене
-    </button>
+    </button> -->
     <!-- <div>
       <h1 class="user-name">{{ userData | json }}</h1>
       <p>{{ userData.name }}</p>
@@ -71,7 +89,7 @@
       <p>{{ userData.email }}</p>
       <p>{{ userData.created_at }}</p>
     </div> -->
-    <br>
+    <!-- <br> -->
 
 
 
@@ -103,14 +121,17 @@
               Змінити профіль
       </button>
     </form> -->
-  <div class="user-manage">
 
-    <button (click)="deleteUser()"
+
+  <!-- <div class="user-manage"> -->
+    <!-- <button (click)="deleteUser()"
             class="button-login"
             type="button">
             Видалити профіль
     </button>
-  </div>
+  </div> -->
+
+
 <!-- <div *ngIf="changeSubmited">
   <p>Ваші дані збережено.</p>
   <pre>
@@ -118,11 +139,11 @@
   </pre>
 </div> -->
 
-  <div class="invite__component">
+  <!-- <div class="invite__component">
     <form (ngSubmit)="submitInvite(formInvite)"
-      #formInvite="ngForm">
+      #formInvite="ngForm"> -->
 
-      <input type="email"
+      <!-- <input type="email"
         [(ngModel)]="formInvite.emailInvite"
         name="email"
         placeholder="е-mail адреса"
@@ -145,7 +166,6 @@
         <option value="1">Адміністратор</option>
       </select>
         <br><br>
-        <!-- <input type="datetime"> -->
         <input type="datetime-local"
           required>
         <br><br>
@@ -156,7 +176,7 @@
         </button>
 
     </form>
-  </div>
+  </div> -->
 
-</div>
+
 
