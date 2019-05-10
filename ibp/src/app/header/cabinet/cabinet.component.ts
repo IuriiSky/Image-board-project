@@ -66,4 +66,8 @@ export class CabinetComponent implements OnInit {
     );
   }
 
+  submitInvite(formInvite: NgForm) {
+    console.log('Запрошення відправлено!', formInvite)
+  }
+
 }

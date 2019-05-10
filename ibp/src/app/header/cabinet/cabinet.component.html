@@ -64,3 +64,43 @@
     {{userDataChange | json}}
   </pre>
 </div> -->
+
+<div>
+  <form (ngSubmit)="submitInvite(formInvite)"
+    #formInvite="ngForm">
+
+    <input type="email"
+      [(ngModel)]="formInvite.emailInvite"
+      name="email"
+      placeholder="е-mail адреса"
+      required
+      email>
+      <br><br>
+
+    <select name="accessLevel"
+      id=""
+      [(ngModel)]="formInvite.accessLevel"
+      required>
+
+      <option 
+        
+        selected>
+          Оберіть тип доступу
+      </option>
+
+      <option value="0">Модератор</option>
+      <option value="1">Адміністратор</option>
+    </select>
+      <br><br>
+      <!-- <input type="datetime"> -->
+      <input type="datetime-local"
+        required>
+      <br><br>
+    <button
+      type="submit"
+      [disabled]="!formInvite.valid">
+        Відправити запрошення
+      </button>
+
+  </form>
+</div>
