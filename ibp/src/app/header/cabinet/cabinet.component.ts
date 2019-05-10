@@ -3,6 +3,8 @@ import { CabinetService } from '../../services/cabinet.service';
 import { UsersService } from '../../services/users.service';
 import { FormControl, FormGroup, NgForm } from '@angular/forms';
 import { InterfaceUser } from '../../shared/interfaces/users.interfaces';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-cabinet',
@@ -13,7 +15,8 @@ export class CabinetComponent implements OnInit {
 
   authorizedUser = {};
   constructor(private cabinetUser: CabinetService,
-              private usersService: UsersService) { }
+              private usersService: UsersService,
+              private router: Router) { }
 
   public changeDataUser: InterfaceUser = {
     email: '',
@@ -29,7 +32,7 @@ export class CabinetComponent implements OnInit {
     this.cabinetUser.getUser()
     .subscribe(
       response => {this.authorizedUser = response,
-        console.log(this.authorizedUser);
+        window.localStorage.setItem('userData', JSON.stringify(response));
       },
       error => console.log(error)
     );
@@ -65,5 +68,9 @@ export class CabinetComponent implements OnInit {
       error => console.log(error)
     );
   }
+
+  // submitInvite(formInvite: NgForm) {
+  //   console.log('Запрошення відправлено!', formInvite);
+  // }
 
 }

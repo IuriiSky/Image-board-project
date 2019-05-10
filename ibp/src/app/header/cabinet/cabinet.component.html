@@ -1,66 +1,182 @@
-<div>
-  <a style="cursor:pointer"
-    (click)="cabinetUser.logoutUser()">
-    Вийти з профілю
-  </a>
-      <!-- *ngIf="!cabinetServise.checkUserLoggedIn()" -->
+<div class="main-wrapper">
+  <nav>
+    <ul>
 
-</div>
-<div class="user-manage">
-  <button (click)="getUser()"
-          class="button-login"
-          data-content="user"
-          type="button">
+      <li>
+        <a routerLinkActive="active"
+          routerLink="/me/admin/reports">
+          Скарги
+        </a>
+      </li>
+
+      <li>
+        <a routerLinkActive="active"
+          routerLink="/me/admin/boards">
+          Дошки
+        </a>
+      </li>
+
+      <li>
+        <a routerLinkActive="active"
+          routerLink="/me/admin/users">
+          Юзери
+        </a>
+      </li>
+
+      <li>
+        <a routerLinkActive="active"
+          routerLink="/me/info">
+          <!-- [routeLink]="['/me', 'info']" -->
+
           Інформація про мене
-  </button>
-  <div>
-  <!-- <h1 class="user-name">{{ userData | json }}</h1> -->
-  <p>{{ userData.name }}</p>
-  <!-- <p class="user-name">{{ userData.access_level }}</p> -->
-  <p>{{ userData.email }}</p>
-  <p>{{ userData.created_at }}</p>
-</div>
-  <br>
+        </a>
+      </li>
 
+      <li>
+        <a routerLinkActive="active"
+          routerLink="/me/invites">
+          Додати адміністратора/модератора
+        </a>
+      </li>
 
+      <li>
+        <a routerLinkActive="active"
+          routerLink="/me/posts">
+          Мої пости
+        </a>
+      </li>
 
+      <li>
+        <a routerLinkActive="active"
+          routerLink="/me/mentions">
+          Згадування моїх постів
+        </a>
+      </li>
 
+      <li (click)="cabinetUser.logoutUser()">
+        <a style="cursor:pointer"
+          >
+     <!-- *ngIf="!cabinetServise.checkUserLoggedIn()" -->
+          Вийти з профілю
+        </a>
+      </li>
 
-  <!-- <h1>Змінити персональну інформацію</h1>
-  <form (ngSubmit)="changeUser(changeUserForm)"
-        #changeUserForm = "ngForm">
-    <input type="email"
-            ngModel
-            name="email"
-            placeholder="е-mail адреса"
-            required
-            email
-            #email="ngModel">
-    <p *ngIf="email.invalid && email.touched">
-      Введіть коректну е-mail адресу!
-    </p>
-    <input type="text" ngModel name="user" placeholder="логін" required>
-    <input type="password"
-            ngModel
-            name="password"
-            placeholder="пароль"
-            required
-            #password="ngModel"> -->
-    <!-- <p *ngIf="password.touched">Поле пароль не повинно бути пусте!</p> -->
-    <!-- <button class="button"
-            type="submit">
-            Змінити профіль
-    </button>
-  </form> -->
-  <button (click)="deleteUser()"
+      <li>
+        <button (click)="deleteUser()"
           class="button-login"
           type="button">
           Видалити профіль
-  </button>
+        </button>
+      </li>
+
+    </ul>
+  </nav>
+  <article>
+    <router-outlet></router-outlet>
+  </article>
+
 </div>
+    <!-- <button (click)="getUser()"
+            class="button-login"
+            data-content="user"
+            type="button">
+            Інформація про мене
+    </button> -->
+    <!-- <div>
+      <h1 class="user-name">{{ userData | json }}</h1>
+      <p>{{ userData.name }}</p>
+      <p class="user-name">{{ userData.access_level }}</p>
+      <p>{{ userData.email }}</p>
+      <p>{{ userData.created_at }}</p>
+    </div> -->
+    <!-- <br> -->
+
+
+
+
+
+    <!-- <h1>Змінити персональну інформацію</h1>
+    <form (ngSubmit)="changeUser(changeUserForm)"
+          #changeUserForm = "ngForm">
+      <input type="email"
+              ngModel
+              name="email"
+              placeholder="е-mail адреса"
+              required
+              email
+              #email="ngModel">
+      <p *ngIf="email.invalid && email.touched">
+        Введіть коректну е-mail адресу!
+      </p>
+      <input type="text" ngModel name="user" placeholder="логін" required>
+      <input type="password"
+              ngModel
+              name="password"
+              placeholder="пароль"
+              required
+              #password="ngModel"> -->
+      <!-- <p *ngIf="password.touched">Поле пароль не повинно бути пусте!</p> -->
+      <!-- <button class="button"
+              type="submit">
+              Змінити профіль
+      </button>
+    </form> -->
+
+
+  <!-- <div class="user-manage"> -->
+    <!-- <button (click)="deleteUser()"
+            class="button-login"
+            type="button">
+            Видалити профіль
+    </button>
+  </div> -->
+
+
 <!-- <div *ngIf="changeSubmited">
   <p>Ваші дані збережено.</p>
   <pre>
     {{userDataChange | json}}
   </pre>
 </div> -->
+
+  <!-- <div class="invite__component">
+    <form (ngSubmit)="submitInvite(formInvite)"
+      #formInvite="ngForm"> -->
+
+      <!-- <input type="email"
+        [(ngModel)]="formInvite.emailInvite"
+        name="email"
+        placeholder="е-mail адреса"
+        required
+        email>
+        <br><br>
+
+      <select name="accessLevel"
+        id=""
+        [(ngModel)]="formInvite.accessLevel"
+        required>
+
+        <option
+
+          selected>
+            Оберіть тип доступу
+        </option>
+
+        <option value="0">Модератор</option>
+        <option value="1">Адміністратор</option>
+      </select>
+        <br><br>
+        <input type="datetime-local"
+          required>
+        <br><br>
+      <button
+        type="submit"
+        [disabled]="!formInvite.valid">
+          Відправити запрошення
+        </button>
+
+    </form>
+  </div> -->
+
+
+
