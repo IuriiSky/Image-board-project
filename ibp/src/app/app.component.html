@@ -16,8 +16,11 @@
         </fieldset>
     </form>
 </div>
-<ul class="category-list clearfix">
-    <li class="category-item" *ngFor="let board of boards"> 
-        <a class="category-name" [routerLink] = "['/boards', board.short_name]" >{{board.name}}</a>
+
+<div class="boards-list">
+  <ul class="category-list clearfix">
+    <li class="category-item" *ngFor="let board of boards">
+      <a class="category-name" [routerLink] = "['/boards', board.short_name]" >{{board.name}}</a>
     </li>
-</ul>
+  </ul>
+</div>
