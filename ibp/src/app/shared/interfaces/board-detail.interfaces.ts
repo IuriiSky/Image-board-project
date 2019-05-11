@@ -9,12 +9,17 @@ export interface PostDetails {
     pinned: boolean;
     content: PostContent;
     }
+
 export interface PostContent{
-    attachments : PostAttachment[];
+    index: number;
+    text: string;
+    created_at: string;
+    op: boolean;
+    sage: boolean;
+    images : ImagesAttachment[];
 }
 
-export interface PostAttachment{
-    type:string;
+export interface ImagesAttachment{
     file: FileAttachment;
 }
 
@@ -25,6 +30,3 @@ export interface FileAttachment{
 export interface Thumb{
     url:string;
 }
-
-
-

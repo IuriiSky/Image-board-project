@@ -10,7 +10,7 @@
 
     <div class="single-post" *ngFor="let post of boardDetail.posts">
       <p>{{post.subject}}</p> 
-      <span>{{post.content.text}}</span>
+      <span [innerHtml]= 'post.content.text'></span>
       <span>{{post.content.created_at}}</span>
 
       
