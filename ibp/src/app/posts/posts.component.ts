@@ -62,13 +62,89 @@ export class PostsComponent implements OnInit {
     this.showCreateForm = true;
   });
   }
+  
+  boldClicked(){
+    this.appendTag(new Tag("b"));
+  }
+
+  italicClicked(){
+  this.appendTag(new Tag("i"));
+}
+
+  underlineClicked(){
+  this.appendTag(new Tag("u"));
+}
+
+  strikethroughClicked(){
+    this.appendTag(new Tag("s"));
+  }
+
+  subscriptClicked(){
+    this.appendTag(new Tag("sub"));
+  }
+
+  superscriptClicked(){
+    this.appendTag(new Tag("sup"));
+  }
+
+  getCursorPosition(){
+    let myTextArea = document.getElementById('area') as HTMLInputElement;
+    let index = myTextArea.selectionStart; 
+    return index;
+  }
+
+  setCursorPosition(position: number){
+    let myTextArea = document.getElementById('area') as HTMLInputElement;
+    myTextArea.focus();
+    myTextArea.setSelectionRange(position, position);
+  }
+ 
+  splitString(str: string, index:number){
+    return {
+      leftSide: str.substring(0, index),
+      rigthSide: str.substring(index, str.length)
+    };
+  }
+  
+  appendTag(t:Tag){
+    let split = this.splitString(this.createNewPost.text, this.getCursorPosition());
+    let newStr = split.leftSide + t.getFullTag() + split.rigthSide;
+    this.createNewPost.text = newStr;
+    setTimeout(() => 
+      this.setCursorPosition(split.leftSide.length + t.getLenght()),
+      500
+    )
+
+  }
 
   ngOnInit() {
   this.createPost = new FormGroup({
-    name: new FormControl('',[Validators.required, Validators.maxLength(20)]),
-    email: new FormControl('',[Validators.required]),
     subject: new FormControl('', [Validators.required]),
     text: new FormControl('', [Validators.required]),      
   });
 };
 }
+
+class Tag { 
+  constructor(tagValue:string){
+    this.tag = tagValue;
+  }
+
+  private tag : string;
+
+  openTag(){
+    return "[" + this.tag + "]";
+  };
+
+  closeTag(){
+    return "[/" + this.tag + "]";
+  };
+
+  getFullTag(){
+    return this.openTag() + this.closeTag();
+  };
+
+  getLenght(){
+    return this.openTag().length;
+  };
+};
