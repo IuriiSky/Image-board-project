@@ -21,7 +21,8 @@ export class CabinetComponent implements OnInit {
   public changeDataUser: InterfaceUser = {
     email: '',
     user: '',
-    password: ''
+    password: '',
+    invite_token: ''
   };
 
   userData = {};

@@ -23,7 +23,7 @@ export class UsersService {
     const dataUser = {
       'user[email]': user.email,
       'user[name]': user.user,
-      'user[password]': user.password
+      'user[password]': user.password,
     };
     return this.http.post<any>(this.registerUrl, this.objToEncodeUrl(dataUser), httpOptions);
   }
