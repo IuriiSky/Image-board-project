@@ -21,18 +21,25 @@ export class CabinetComponent implements OnInit {
   public changeDataUser: InterfaceUser = {
     email: '',
     user: '',
-    password: ''
+    password: '',
+    invite_token: ''
   };
 
   userData = {};
   userDataChange = {};
   changeSubmited = false;
+  accessAdmin = false;
+
+  // access = window.localStorage.getItem(this.userData.access_level);
 
   ngOnInit() {
     this.cabinetUser.getUser()
     .subscribe(
       response => {this.authorizedUser = response,
         window.localStorage.setItem('userData', JSON.stringify(response));
+                   if (response.access_level === 'admin') {
+          this.accessAdmin = true;
+        }
       },
       error => console.log(error)
     );

@@ -20,9 +20,10 @@ const httpOptionsChangeUser = {
 
 export class CabinetService {
   usersUrl = 'http://localhost:3000/api/users/me';
+  private inviteUrl = 'http://localhost:3000/api/invites';
   constructor(private http: HttpClient,
-    private cookieService: CookieService,
-    private router: Router) { }
+              private cookieService: CookieService,
+              private router: Router) { }
 
   getUser() {
     return this.http.get<any>(this.usersUrl, httpOptions);
@@ -44,4 +45,24 @@ export class CabinetService {
   // checkUserLoggedIn() {
   //   return this.cookieService.get('token');
   // }
+
+  submitInvite(invite) {
+    return this.http.post<any>(this.inviteUrl, this.objToEncodeInviteUrl(invite), httpOptions);
+  }
+
+    private objToEncodeInviteUrl(obj: any): string {
+
+      const str = [];
+
+      console.log(str);
+      for (const property in obj) {
+          if (Array.isArray(obj[property])) {
+              str.push('invite[' + encodeURIComponent(property) + ']' + '=' + encodeURIComponent(obj[property]));
+          } else {
+              str.push('invite[' + encodeURIComponent(property) + ']' + '=' + encodeURIComponent(obj[property]));
+          }
+      }
+      return str.join('&');
+  }
+
 }

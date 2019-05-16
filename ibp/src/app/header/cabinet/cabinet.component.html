@@ -2,21 +2,21 @@
   <nav>
     <ul>
 
-      <li>
+      <li *ngIf="accessAdmin">
         <a routerLinkActive="active"
           routerLink="/me/admin/reports">
           Скарги
         </a>
       </li>
 
-      <li>
+      <li *ngIf="accessAdmin">
         <a routerLinkActive="active"
           routerLink="/me/admin/boards">
           Дошки
         </a>
       </li>
 
-      <li>
+      <li *ngIf="accessAdmin">
         <a routerLinkActive="active"
           routerLink="/me/admin/users">
           Юзери
@@ -32,7 +32,7 @@
         </a>
       </li>
 
-      <li>
+      <li *ngIf="accessAdmin">
         <a routerLinkActive="active"
           routerLink="/me/invites">
           Додати адміністратора/модератора
