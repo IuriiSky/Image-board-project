@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NgForm } from '@angular/forms';
-
+import { CabinetService } from '../../../services/cabinet.service';
 
 @Component({
   selector: 'app-inviteuser',
@@ -9,12 +9,20 @@ import { FormControl, FormGroup, NgForm } from '@angular/forms';
 })
 export class InviteuserComponent implements OnInit {
 
-  constructor() { }
-
+  formInvite = {};
+  constructor(private inviteUser: CabinetService) { }
+  tockenInvite: string;
   ngOnInit() {
   }
 
-  submitInvite(formInvite: NgForm) {
-    console.log('Запрошення відправлено!', formInvite);
+  submitInvite() {
+    console.log('Запрошення відправлено!', this.formInvite);
+    this.inviteUser.submitInvite(this.formInvite)
+    .subscribe(
+      response => {
+        console.log(response),
+        this.tockenInvite = response.tocken;
+      }, error => console.log(error)
+    );
   }
 }

@@ -1,43 +1,35 @@
-<p>
-  inviteuser works!
-</p>
-<div class="invite__component">
-  <form (ngSubmit)="submitInvite(formInvite)"
-    #formInvite="ngForm">
+
+<form class="form">
 
     <input type="email"
-      [(ngModel)]="formInvite.emailInvite"
+      [(ngModel)]="formInvite.email"
       name="email"
-      placeholder="е-mail адреса"
-      required
-      email>
-      <br><br>
-
-    <select name="accessLevel"
-      id=""
-      [(ngModel)]="formInvite.accessLevel"
-      
       required>
+    <br><br>
 
+    <select name="access_level"
+      [(ngModel)]="formInvite.access_level"
+      required>
       <option
-
-        selected>
-          Оберіть тип доступу
+        value="">
+        Оберіть тип доступу
       </option>
-
       <option value="0">Модератор</option>
       <option value="1">Адміністратор</option>
     </select>
-      <br><br>
-      <!-- <input type="datetime"> -->
-      <input type="datetime-local"
-        required>
-      <br><br>
-    <button
-      type="submit"
-      [disabled]="!formInvite.valid">
-        Відправити запрошення
-      </button>
+    <br><br>
 
-  </form>
-</div>
+    <input type="datetime-local"
+      [(ngModel)]="formInvite.expires_at"
+      name="expires_at"
+      required>
+      <br><br>
+
+  <button type="button"
+    (click)="submitInvite()">
+    Згенерувати токен для запрошення
+  </button>
+
+</form>
+
+<p>Токен для запрошення: {{ tockenInvite }}</p>
