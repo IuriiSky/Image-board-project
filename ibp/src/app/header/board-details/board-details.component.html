@@ -1,22 +1,27 @@
 
   <button type="submit" class="create-post">
-    <a class="link-button" routerLink = "/boards/{{boardName}}/createpost">Create new tred</a>
+    <a class="link-button" routerLink = "/boards/{{boardName}}/createpost">Створити пост</a>
   </button>
   <div *ngIf="boardDetail">
-    
-    <div *ngIf="bigImage">
-      <img src = {{bigImage}}  alt="pictures" (click)="setActiveBigImage(null)">
-    </div>
-
     <div class="single-post" *ngFor="let post of boardDetail.posts">
-      <p>{{post.subject}}</p> 
-      <span [innerHtml]= 'post.content.text'></span>
-      <span>{{post.content.created_at}}</span>
-
-      
-      <div *ngFor="let file of getImageAttachment(post)">
-        <img src = {{addBaseUrl(file.thumb.url)}}  alt="pictures" (click)="setActiveBigImage(addBaseUrl(file.url))">
-      </div>
-    </div>
-  <div>
+      <p>{{post.subject}} 
+        <button type="submit" class="create-replies">
+          <a class="link-button" routerLink = "/boards/{{boardName}}/{{post.content.index}}/createreplies">>>{{post.content.index}}</a>
+        </button> <span>{{post.content.created_at}} </span></p>
+        <span [innerHtml]= 'post.content.text'></span>
+        <div *ngIf="bigImage">
+          <img src = {{bigImage}}  alt="pictures" (click)="setActiveBigImage(null)">
+        </div>
+        <div *ngFor="let file of getImageAttachment(post)">
+          <img src = {{addBaseUrl(file.thumb.url)}}  alt="pictures" (click)="setActiveBigImage(addBaseUrl(file.url))">
+        </div>
+        <div *ngFor="let prev of post.post_preview">
+          <div *ngIf="show" class="reply-visible">
+            <p><span class="index-style">>>{{prev.index}}</span> <span>{{prev.created_at}}</span></p>
+            <span [innerHtml]='prev.text'></span>
+          </div>
+        </div> 
+        <button class="show-btn" (click)="showReplies()" (click)="addReplyDiv()">{{buttonName}}</button>
+      </div> 
+    </div>                 
       

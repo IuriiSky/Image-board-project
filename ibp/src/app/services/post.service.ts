@@ -28,4 +28,8 @@ export class PostService {
       return this.http.post<any>(this.baseApi + 'posts/'+ boardShortName, formData);
   
   };
+
+  getReplyForPost(board_index: string, post_index: string){
+    return this.http.get<Post[]>(this.baseApi + 'posts/' + board_index + '/' + post_index);
+  }
 };

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BoardDetail, PostDetails, ImagesAttachment } from '../../shared/interfaces/board-detail.interfaces';
+import { BoardDetail, PostDetails, ImagesAttachment, PostContent } from '../../shared/interfaces/board-detail.interfaces';
 import { BoardDetailService } from '../../services/board-detail.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
@@ -28,9 +28,30 @@ export class BoardDetailsComponent implements OnInit {
       });
      };
 
+    public show: boolean = false;
+    public buttonName: any = 'Показати коментарі';
+
+    showReplies(){
+      this.show = !this.show;
+      if(this.show)
+        this.buttonName = 'Сховати коментарі';
+      else 
+        this.buttonName = 'Показати коментарі';
+    }
+
+    // addReplyDiv(){
+    //   let singlePost = document.querySelector('.single-post.');
+    //   const title = document.createElement('div');
+    //   title.className ='reply-wrapper';
+    //   singlePost.appendChild(title);
+    //   console.log('title', title)
+    // }
+
   ngOnInit() {
     this.boardDetailService.getAllPosts(this.boardName).subscribe((data:BoardDetail) => {
-      this.boardDetail = data});
+      this.boardDetail = data;
+      console.log(this.boardDetail);
+    });
   }
 
   setActiveBigImage(image: string){
@@ -39,6 +60,11 @@ export class BoardDetailsComponent implements OnInit {
 
   getImageAttachment(post: PostDetails){
     let attachments = post.content.images.map(a => a.file);
+    return attachments;
+  }
+
+  getImageReply (post_preview: PostContent){
+    let attachments = post_preview.images.map(a => a.file);
     return attachments;
   }
 

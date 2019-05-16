@@ -1,5 +1,5 @@
 export interface Post {
-    board_index: number;
+    board_index: string;
     post_index: string;
 }
 

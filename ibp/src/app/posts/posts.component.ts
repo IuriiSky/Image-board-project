@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CreatePost, Post,} from '../shared/interfaces/post.interface';
+import { CreatePost, Post} from '../shared/interfaces/post.interface';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { PostService } from '../services/post.service';
@@ -20,8 +20,6 @@ export class PostsComponent implements OnInit {
     this.showCreateForm = false;
   }
     
-  public today: Date = new Date();
-
   public posts: Post[];
 
   private boardIndex: string = 'b';
@@ -33,12 +31,8 @@ export class PostsComponent implements OnInit {
                   if (params["board_index"]) {
                     this.boardIndex = params["board_index"];
                     console.log(this.boardIndex);
-                  }
+                  } 
                 });
-
-      setInterval(() => {
-        this.today = new Date();
-      }, 1);
   };
 
   public createNewPost: CreatePost = {
@@ -62,7 +56,7 @@ export class PostsComponent implements OnInit {
     this.showCreateForm = true;
   });
   }
-  
+
   boldClicked(){
     this.appendTag(new Tag("b"));
   }

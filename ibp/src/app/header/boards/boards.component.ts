@@ -20,9 +20,9 @@ export class BoardsComponent implements OnInit {
     this.showCreateForm = false;
   }
 
-  toggleCancelBoard() {
-    this.showCreateForm = true;
-  }
+  // toggleCancelBoard() {
+  //   this.showCreateForm = true;
+  // }
 
   public boards: Board[];
 
