@@ -30,11 +30,13 @@ export class LoginComponent implements OnInit {
   public createNewUser: InterfaceUser = {
     email: '',
     user: '',
-    password: ''
+    password: '',
+    invite_token: ''
   };
 
   loginVisibility: boolean = false;
   registerVisibility: boolean = true;
+  registerToManage = false;
 
   toggleLogin() {
     this.loginVisibility = false;
@@ -53,7 +55,8 @@ export class LoginComponent implements OnInit {
     this.userRegisterControl = new FormGroup({
       email: new FormControl(),
       user: new FormControl(),
-      password: new FormControl()
+      password: new FormControl(),
+      invite_token: new FormControl()
     });
 
     if (this.authorizationGuard.redirectUrl) {
@@ -94,6 +97,11 @@ export class LoginComponent implements OnInit {
     this.createNewUser.email = '';
     this.createNewUser.user = '';
     this.createNewUser.password = '';
+    this.createNewUser.invite_token = '';
+  }
+
+  addInputToken() {
+    this.registerToManage = !this.registerToManage;
   }
 
   // Validators
