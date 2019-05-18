@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { Board, CreateBoard } from '../../shared/interfaces/board.interfaces';
 import { BoardsService } from '../../services/boards.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 
 export class BoardsComponent implements OnInit {
+
 
   createBoard: FormGroup;
 

@@ -7,5 +7,5 @@ export interface CreatePost {
     board_index: string;
     subject: string;
     text: string;
-    file: File;
+    files: FileList;
 }

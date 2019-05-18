@@ -21,8 +21,14 @@ export class ReplyService {
   createNewReply(reply: CreateReply, shortName: string, postIndex: string){
       let formData = new FormData();
           formData.append('reply[text]', reply.text);
-          formData.append('reply[attachments_attributes][]', reply.file, reply.file.name);
+
+          if (reply.files !== null) {
+            for (let i = 0; i < reply.files.length; i++) {
+              let file = reply.files.item(i);
+              formData.append('reply[attachments_attributes][]', file, file.name);
+            };
+          };
 
           return this.http.post<any>(this.baseApi + 'replies/' + shortName + '/' + postIndex, formData);
-  }
+  };
 };

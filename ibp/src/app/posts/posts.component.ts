@@ -39,12 +39,12 @@ export class PostsComponent implements OnInit {
     board_index: this.boardIndex,
     subject: '',
     text: '',
-    file: null,
+    files: null,
   };
 
   handleFileInput(files: FileList) {
-    this.createNewPost.file = files.item(0);
-}
+    this.createNewPost.files = files;
+  };
 
   addPost() {
     this.postService.createNewPost(this.createNewPost, this.boardIndex)
@@ -52,53 +52,70 @@ export class PostsComponent implements OnInit {
     console.log(post);
       this.createNewPost.subject = '';
       this.createNewPost.text = '';
-      // this.createNewPost.file = ;
-    this.showCreateForm = true;
-  });
-  }
+      this.showCreateForm = true;
+    });
+  };
+
+  createCite(t:Tag){
+    let split = this.splitString(this.createNewPost.text, this.getCursorPosition());
+    let newStr = split.leftSide + t.getCite() + split.rigthSide;
+    this.createNewPost.text = newStr;
+    let textarea = document.querySelector('.textarea');
+    let span = document.createElement('span');
+    span.className = 'quote';
+    textarea.appendChild(span);
+    setTimeout(() => 
+      this.setCursorPosition(split.leftSide.length + t.getLenght()),
+      500
+    )
+  };
+
+  circleRight(){
+    this.createCite(new Tag(">"))
+  };
 
   boldClicked(){
     this.appendTag(new Tag("b"));
-  }
+  };
 
   italicClicked(){
   this.appendTag(new Tag("i"));
-}
+  };
 
   underlineClicked(){
   this.appendTag(new Tag("u"));
-}
+  };
 
   strikethroughClicked(){
     this.appendTag(new Tag("s"));
-  }
+  };
 
   subscriptClicked(){
     this.appendTag(new Tag("sub"));
-  }
+  };
 
   superscriptClicked(){
     this.appendTag(new Tag("sup"));
-  }
+  };
 
   getCursorPosition(){
     let myTextArea = document.getElementById('area') as HTMLInputElement;
     let index = myTextArea.selectionStart; 
     return index;
-  }
+  };
 
   setCursorPosition(position: number){
     let myTextArea = document.getElementById('area') as HTMLInputElement;
     myTextArea.focus();
     myTextArea.setSelectionRange(position, position);
-  }
+  };
  
   splitString(str: string, index:number){
     return {
       leftSide: str.substring(0, index),
       rigthSide: str.substring(index, str.length)
     };
-  }
+  };
   
   appendTag(t:Tag){
     let split = this.splitString(this.createNewPost.text, this.getCursorPosition());
@@ -108,8 +125,7 @@ export class PostsComponent implements OnInit {
       this.setCursorPosition(split.leftSide.length + t.getLenght()),
       500
     )
-
-  }
+  };
 
   ngOnInit() {
   this.createPost = new FormGroup({
@@ -125,6 +141,10 @@ class Tag {
   }
 
   private tag : string;
+
+  getCite(){
+    return ">";
+  };
 
   openTag(){
     return "[" + this.tag + "]";

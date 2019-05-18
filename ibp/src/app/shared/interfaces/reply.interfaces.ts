@@ -8,5 +8,5 @@ export interface CreateReply {
     board_index: string; // коротка назва дошки
     post_index: string; // індекс поста до якого робиться коментар
     text: string;
-    file: File;
+    files: FileList;
 }
