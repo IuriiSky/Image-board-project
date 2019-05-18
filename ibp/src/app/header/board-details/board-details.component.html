@@ -10,22 +10,21 @@
           <a class="link-button" routerLink = "/boards/{{boardName}}/{{post.content.index}}/createreplies"  title="Коментувати">
             {{post.content.index}}</a>
         </button></p>
-        <span [innerHtml]= 'post.content.text'></span>
-        <div *ngIf="bigImage">
-          <img src = {{bigImage}}  alt="pictures" (click)="setActiveBigImage(null)">
-        </div>
-        <div class="preview-img" *ngFor="let file of getImageAttachment(post.content)">
+        <figure *ngIf="bigImage" class="show-big-images">
+          <img src = {{bigImage}}  alt="pictures" (click)="setActiveBigImage(null)" width="800px" height="450px">
+        </figure>
+        <figure class="preview-img" *ngFor="let file of getImageAttachment(post.content)">
           <img src = {{addBaseUrl(file.thumb.url)}}  alt="pictures" (click)="setActiveBigImage(addBaseUrl(file.url))">
-        </div>
+        </figure>
+        <span class="main-text" [innerHtml]= 'post.content.text'></span>
         <div *ngFor="let prev of post.post_preview">
           <div class="reply-visible">
-            <p><span class="index-style">{{prev.index}}</span> <span>{{prev.created_at}}</span></p>
-            <span [innerHtml]='prev.text'></span>
-            <div *ngFor="let file of getImageAttachment(prev)">
+            <p><span>{{prev.created_at}}</span> <span class="index-style">{{prev.index}}</span></p>
+            <figure class="preview-img" *ngFor="let file of getImageAttachment(prev)">
               <img src = {{addBaseUrl(file.thumb.url)}}  alt="pictures" (click)="setActiveBigImage(addBaseUrl(file.url))">
-            </div>
+            </figure>
+            <span class="main-text" [innerHtml]='prev.text'></span>
           </div>
         </div> 
     </div>
   </div>                 
-      

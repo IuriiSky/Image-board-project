@@ -39,7 +39,6 @@
 }
 
 .reply-visible {
-    display: block;
     background-color: #dddddd;
     border : 1px solid #808080;
     margin: 10px 50px;
@@ -56,10 +55,19 @@
     font-size: 1em;
 }
 
-.text{
-    display: inline;
+.preview-img{
+    display: inline-block;
 }
 
-.preview-img{
-    display: inline;
+.main-text{
+    display: block;
+}
+
+.show-big-images {
+    position: fixed;
+    text-align: center;
+    margin-top: 33px;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
 }
